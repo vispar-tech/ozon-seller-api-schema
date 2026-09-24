@@ -16,6 +16,15 @@
 
 Блок генерируется скриптом: `python scripts/update_readme.py schemas/ozon-seller-api-openapi.json README.md`.
 
+## Быстрое скачивание
+
+Актуальная схема ежедневно коммитится в `schemas/ozon-seller-api-openapi.json` — скачать её можно без клонирования репозитория и установки зависимостей:
+
+```bash
+curl -L -o ozon-seller-api-openapi.json \
+  https://raw.githubusercontent.com/vispar-tech/ozon-seller-api-schema/main/schemas/ozon-seller-api-openapi.json
+```
+
 ## Использование
 
 ### Локально

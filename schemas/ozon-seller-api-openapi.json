@@ -56799,13 +56799,13 @@
                     {
                       "id": 5055881,
                       "info": "Здоровье и красота",
-                      "picture": "https://ir-3.ozone.ru/s3/multimedia-i/6010930878.jpg",
+                      "picture": "https://ir-20.ozone.ru/s3/multimedia-i/6010930878.jpg",
                       "value": "Sunshine"
                     },
                     {
                       "id": 5056737,
                       "info": "Красота и здоровье",
-                      "picture": "https://ir-3.ozone.ru/s3/multimedia-v/6088253599.jpg",
+                      "picture": "https://ir-20.ozone.ru/s3/multimedia-v/6088253599.jpg",
                       "value": "Essence"
                     }
                   ]
@@ -62594,7 +62594,7 @@
                 "example": {
                   "result": {
                     "error": "",
-                    "file_url": "https://ir-3.ozone.ru/s3/ord-tmp-12/small_label/ticket-00-0000-0000.pdf",
+                    "file_url": "https://ir-20.ozone.ru/s3/ord-tmp-12/small_label/ticket-00-0000-0000.pdf",
                     "printed_postings_count": 1,
                     "status": "completed",
                     "unprinted_postings": [],
@@ -68824,7 +68824,7 @@
                     "created_at": "2021-11-25T14:54:55.688260Z",
                     "error": "",
                     "expires_at": "2025-11-10T11:16:00.267Z",
-                    "file": "https://ir-3.ozone.ru/s3/item-picture-6/f3/ce/f4ceae54b323213d3e61e59c323bd8e5.csv",
+                    "file": "https://ir-20.ozone.ru/s3/item-picture-6/f3/ce/f4ceae54b323213d3e61e59c323bd8e5.csv",
                     "params": {},
                     "report_type": "seller_products",
                     "status": "success"
@@ -68939,7 +68939,7 @@
                         "created_at": "2019-02-06T12:09:47.258062Z",
                         "error": "",
                         "expires_at": "2025-11-10T11:35:10.028Z",
-                        "file": "https://ir-3.ozone.ru/s3/item-picture-6/f3/ce/f4ceae54b323213d3e61e59c323bd8e5.csvv",
+                        "file": "https://ir-20.ozone.ru/s3/item-picture-6/f3/ce/f4ceae54b323213d3e61e59c323bd8e5.csvv",
                         "params": {
                           "visibility": "3"
                         },
@@ -68950,7 +68950,7 @@
                         "code": "REPORT_seller_products_924336_1720170405_a9ea2f27-a473-4b13-99f9-d0cfcb5b1a69",
                         "created_at": "2019-02-15T08:34:32.267178Z",
                         "error": "",
-                        "file": "https://ir-3.ozone.ru/s3/item-picture-6/f3/ce/f4ceae54b323213d3e61e59c323bd8e5.csv",
+                        "file": "https://ir-20.ozone.ru/s3/item-picture-6/f3/ce/f4ceae54b323213d3e61e59c323bd8e5.csv",
                         "params": {
                           "visibility": "3"
                         },
@@ -86738,8 +86738,8 @@
                       "height": 10,
                       "id": 213761435,
                       "images": [
-                        "https://ir-3.ozone.ru/s3/multimedia-4/6804736960.jpg",
-                        "https://ir-3.ozone.ru/s3/multimedia-j/6835412647.jpg"
+                        "https://ir-20.ozone.ru/s3/multimedia-4/6804736960.jpg",
+                        "https://ir-20.ozone.ru/s3/multimedia-j/6835412647.jpg"
                       ],
                       "model_info": {
                         "count": 4,
@@ -86748,7 +86748,7 @@
                       "name": "Пленка защитная для Xiaomi Redmi Note 10 Pro 5G",
                       "offer_id": "21470",
                       "pdf_list": [],
-                      "primary_image": "https://ir-3.ozone.ru/s3/multimedia-4/6804736960.jpg",
+                      "primary_image": "https://ir-20.ozone.ru/s3/multimedia-4/6804736960.jpg",
                       "sku": 423434534,
                       "type_id": 124572394,
                       "weight": 50,

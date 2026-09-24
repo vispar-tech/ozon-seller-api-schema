@@ -1,6 +1,4 @@
 ---
-# See https://pre-commit.com for more information
-# See https://pre-commit.com/hooks.html for more hooks
 # Конфиг живёт в корне репо — `pre-commit install` из git-root работает штатно.
 # Poetry-проект этого репо тоже в корне, поэтому хуки cd к toplevel напрямую.
 repos:

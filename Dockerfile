@@ -3,8 +3,7 @@ FROM python:3.14-slim-trixie AS builder
 ENV POETRY_VIRTUALENVS_IN_PROJECT=1 \
     POETRY_NO_INTERACTION=1
 
-# Pin poetry to the version that generated poetry.lock (2.3.2) so a future
-# poetry major with changed lock semantics cannot break the daily rebuild.
+# Pin poetry to the lockfile version (2.3.2) so a future major cannot break the rebuild.
 RUN pip install --no-cache-dir poetry==2.3.2
 
 WORKDIR /app
@@ -12,22 +11,21 @@ WORKDIR /app
 # Metadata first so source changes keep the dependency layer cached.
 COPY pyproject.toml poetry.lock README.md ./
 
-# --only main: dev deps (pytest/ruff/mypy/pre-commit) must not leak into the runtime venv.
+# --only main: dev deps must not leak into the runtime venv.
 RUN poetry install --no-root --only main
 
 COPY ozon_schema_fetcher ./ozon_schema_fetcher
 
-# Full install: dependencies (cached) + the project itself into the venv.
+# Full install: cached deps + the project itself.
 RUN poetry install --only main
 
-# Download the Camoufox browser at build time into $HOME/.cache/camoufox.
+# Download the Camoufox browser at build time.
 RUN poetry run python -m camoufox fetch
 
 
 FROM python:3.14-slim-trixie AS runtime
 
-# Firefox/Camoufox system libraries; trixie renamed packages that moved to a
-# 64-bit time_t ABI with a t64 suffix (libasound2t64, libgtk-3-0t64, ...).
+# Camoufox system libraries (trixie t64 ABI names).
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
         fontconfig \
@@ -60,18 +58,13 @@ RUN apt-get update \
 
 WORKDIR /app
 
-# Camoufox resolves its browser as expanduser("~")/.cache/camoufox and hangs
-# when HOME is missing or unwritable (camoufox #572/#620): run as root with an
-# explicit writable HOME (no USER directive, same as the monorepo images; root
-# also sidesteps -v mount permission issues for the CI-written schemas/).
+# Camoufox needs a writable HOME (camoufox #572/#620): run as root, no USER directive.
 ENV HOME=/root \
     PATH="/app/.venv/bin:$PATH"
 
 COPY --from=builder /app/.venv /app/.venv
 COPY --from=builder /root/.cache/camoufox /root/.cache/camoufox
-# Keep the package dir so `python -m ozon_schema_fetcher` resolves even if the
-# project is installed as editable (a .pth in the venv points back to
-# /app/ozon_schema_fetcher).
+# Keep the package dir so `python -m ozon_schema_fetcher` resolves (editable-install .pth).
 COPY --from=builder /app/ozon_schema_fetcher /app/ozon_schema_fetcher
 
 ENTRYPOINT ["python", "-m", "ozon_schema_fetcher"]

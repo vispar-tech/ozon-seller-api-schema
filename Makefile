@@ -1,4 +1,3 @@
-# Точка входа для локальной работы с репо из корня.
 # Полное описание команд — в AGENTS.md и README.md.
 
 .PHONY: help install fetch test lint docker-build docker-fetch

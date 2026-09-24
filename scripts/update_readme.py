@@ -123,8 +123,7 @@ def main(argv: list[str] | None = None) -> int:
     args = _parse_args(argv)
     schema: Path = args.schema_path
     readme: Path = args.readme_path
-    # parse_float/parse_int=str keeps literal number tokens (2.10 stays "2.10"
-    # instead of float 2.1); only info.version and len(paths) are consumed.
+    # parse_float/parse_int=str keeps number tokens literal (2.10 stays "2.10").
     data: dict[str, Any] = json.loads(
         schema.read_text(encoding="utf-8"),
         parse_float=str,

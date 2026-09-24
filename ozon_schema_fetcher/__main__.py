@@ -73,8 +73,7 @@ def main(argv: list[str] | None = None) -> int:
         indent=JSON_INDENT,
         sort_keys=True,
     )
-    # Atomic replace: write a temp file first so a kill mid-write cannot
-    # clobber the previously committed schema.
+    # Atomic replace: a kill mid-write cannot clobber the committed schema.
     tmp = out.with_suffix(out.suffix + ".tmp")
     try:
         tmp.write_text(payload, encoding="utf-8")

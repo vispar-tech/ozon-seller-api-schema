@@ -57,8 +57,7 @@ def _goto_schema(page: Page, url: str, timeout_ms: int) -> dict[str, Any]:
                 url, wait_until="domcontentloaded", timeout=remaining_ms
             )
         except Error as exc:
-            # Network failure or Playwright timeout: back off before retrying
-            # so a persistent outage does not hammer the network in a hot loop.
+            # Back off on failure so an outage does not hammer the network.
             last_error = exc
             response = None
         if response is not None:

@@ -44,8 +44,6 @@ filterwarnings = [
 
 [tool.ruff]
 target-version = "py314"
-# List of enabled rulesets.
-# See https://docs.astral.sh/ruff/rules/ for more information.
 lint.select = [
     "E",     # Error
     "F",     # Pyflakes

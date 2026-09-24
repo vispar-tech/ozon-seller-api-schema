@@ -1,0 +1,14 @@
+.venv
+__pycache__
+.pytest_cache
+.mypy_cache
+.ruff_cache
+.git
+.github
+tests
+scripts
+schemas
+dist
+*.egg-info
+.DS_Store
+.pre-commit-config.yaml

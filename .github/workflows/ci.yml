@@ -1,0 +1,52 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lint-test:
+    name: Lint & test
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: '3.14'
+      - name: Install Poetry
+        run: pip install poetry==2.3.2
+      - name: Install deps
+        run: poetry install --with dev
+      - name: Lint
+        run: poetry run pre-commit run -a
+      - name: Test
+        run: poetry run pytest
+
+  docker:
+    name: Docker build
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v7
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+      - name: Build image
+        uses: docker/build-push-action@v6
+        with:
+          push: false
+          load: true
+          tags: ozon-schema-fetcher:ci
+          cache-from: type=gha,scope=ozon-schema-fetcher
+          cache-to: type=gha,mode=max,scope=ozon-schema-fetcher
+      - name: Smoke test image
+        run: docker run --rm ozon-schema-fetcher:ci --help

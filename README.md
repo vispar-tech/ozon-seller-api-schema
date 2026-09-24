@@ -1,0 +1,1 @@
+# ozon-seller-api-schema

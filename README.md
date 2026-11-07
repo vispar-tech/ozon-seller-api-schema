@@ -11,7 +11,7 @@
 <!-- SCHEMA-BEGIN -->
 | Версия | Paths | Обновлено |
 | --- | --- | --- |
-| 2.1 | 483 | 2026-11-06 04:43 UTC |
+| 2.1 | 484 | 2026-11-07 04:05 UTC |
 <!-- SCHEMA-END -->
 
 Блок генерируется скриптом: `python scripts/update_readme.py schemas/ozon-seller-api-openapi.json README.md`.
